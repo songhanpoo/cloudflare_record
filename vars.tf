@@ -19,17 +19,3 @@ variable "domain" {
     error_message = "The domain value must only support one-sub level for domain. Ex: sub.example.com ,..."
   }
 }
-
-# variable "api_key" {
-#   type = string
-#   description = "(Required) This is api key for authen with cloudflare"
-# }
-
-# variable "email" {
-#   type = string
-#   description = "This is email for authen with cloudflare"
-#   validation {
-#     condition     = can(regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}", var.email))
-#     error_message = "Pls input extractly your domain."
-#   }
-# }

@@ -32,8 +32,6 @@ This module creates cloudflare record.
 |------|-------------|------|---------|:--------:|
 | [listRecordSta](#input\_listRecordSta) | A object of array for record dns apply to cloudflare. | `list(object()` | `NA` | yes |
 | [domain](#input\_domain) | This is variable for lookup domain, that get value zoneid then config dns record. *The domain value must only support one-sub level for domain*. | `string` | `NA` | yes |
-| [api_key](#input\_api_key) | This is api key for authen with cloudflare | `string` | `NA` | yes |
-| [email](#input\_hostnames) | This is email for authentication with cloudflare. *The domain value must only support one-sub level for domain*.| `string` | `NA` | yes |
 
 ## Outputs
 ### Console output
