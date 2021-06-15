@@ -12,25 +12,20 @@ terraform {
   }
 }
 
-provider "cloudflare" {
-  email = var.email
-  api_key = var.api_key
-}
-
 data "cloudflare_zones" "this" {
   filter {
-    name = var.listRecordSta
+    name = var.domain
     status = "active"
   }
 }
 
 resource "cloudflare_record" "this" {
   count    = length(var.listRecordSta)
-  zone_id  = "${data.cloudflare_zones.zone_id.zones[0].id}" # (Required)
-  name     = var.obj[count.index].name # (Required)
-  type     = var.obj[count.index].type # (Required)
-  value    = var.obj[count.index].value # (Optional)
-  ttl      = var.obj[count.index].ttl # (Optional)
-  priority = var.obj[count.index].priority # (Optional)
-  proxied  = var.obj[count.index].proxied # (Optional) default to false
+  zone_id  = "${data.cloudflare_zones.this.zones[0].id}" # (Required)
+  name     = var.listRecordSta[count.index].name # (Required)
+  type     = var.listRecordSta[count.index].type # (Required)
+  value    = var.listRecordSta[count.index].value # (Optional)
+  ttl      = var.listRecordSta[count.index].ttl # (Optional)
+  priority = var.listRecordSta[count.index].priority # (Optional)
+  proxied  = var.listRecordSta[count.index].proxied # (Optional) default to false
 }

@@ -15,23 +15,21 @@ variable "domain" {
   type = string
   description = "(Required) This is variable for lookup domain, that get value zoneid then config dns record."
   validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$", var.domain))
-    error_message = "The domain value must only support one-sub level for domain"
+    condition     = can(regex("^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9])).([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}.[a-zA-Z]{2,3})$", var.domain))
+    error_message = "The domain value must only support one-sub level for domain. Ex: sub.example.com ,..."
   }
 }
 
-variable "api_key" {
-  type = string
-  description = "(Required) This is api key for authen with cloudflare"
-}
+# variable "api_key" {
+#   type = string
+#   description = "(Required) This is api key for authen with cloudflare"
+# }
 
-variable "email" {
-  type = string
-  description = "This is email for authen with cloudflare"
-  validation {
-    # regex(...) fails if it cannot find a match
-    condition     = can(regex("^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$", var.email))
-    error_message = "The domain value must only support one-sub level for domain"
-  }
-}
+# variable "email" {
+#   type = string
+#   description = "This is email for authen with cloudflare"
+#   validation {
+#     condition     = can(regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}", var.email))
+#     error_message = "Pls input extractly your domain."
+#   }
+# }
